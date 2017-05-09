@@ -1,0 +1,3 @@
+# LanguageProcessing100
+
+Pythonで言語処理100本ノックを気まぐれにやる
