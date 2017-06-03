@@ -5,7 +5,7 @@ if __name__ == "__main__":
     with open("british_articles.txt") as file:
         lines = file.readlines()
     
-    section_pattern = re.compile("^(=+)\s*(.+?)\s*(=+)$")
+    section_pattern = re.compile("^(=+)\s*(.*?)\s*(=+)$")
     for line in lines:
         section = re.search(section_pattern, line)
         if section is not None:
