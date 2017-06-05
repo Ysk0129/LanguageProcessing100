@@ -15,7 +15,7 @@ if __name__ == "__main__":
         text = file.read()
 
     basic_info = extract_basic_info(text)
-    extract_field = extract_field_dict(basic_info)
+    field_pairs = extract_field_dict(basic_info)
 
-    for k, v in extract_field.items():
+    for k, v in field_pairs.items():
         print(k + " = " + v)
