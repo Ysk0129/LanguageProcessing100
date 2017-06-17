@@ -1,14 +1,13 @@
 import re
 
-def read_morpheme_sentences(filename):
+def extract_morphemes(filename):
 
     with open(filename) as file:
         lines = [l.split("\t") for l in file.readlines()]
     
-    all_morpheme_sentences = []
-    sentence = []
+    morphemes = []
     pos_pattern = re.compile(r"^(.*?)\-(.*?)$")
-    
+
     for line in lines:
         if len(line) >= 4:
             search_result = re.search(pos_pattern, line[3])
@@ -18,17 +17,29 @@ def read_morpheme_sentences(filename):
             else:
                 pos = line[3]
                 pos1 = line[3]
-                print(line)
+            morphemes.append({"surface": line[0], "base": line[2], "pos": pos, "pos1": pos1})
 
-            sentence.append({"surface": line[0], "base": line[1], "pos": pos, "pos1": pos1})
-            if pos1 == "句点":
-                all_morpheme_sentences.append(sentence)
-                sentence = []
+    return morphemes
 
+def separate_morphemes_with_sentence(morphemes):
+
+    all_morpheme_sentences = []
+    sentence = []
+
+    for morpheme in morphemes:
+        sentence.append(morpheme)
+
+        if morpheme["pos1"] == "句点":
+            all_morpheme_sentences.append(sentence)
+            sentence = []
+    
     return all_morpheme_sentences
 
 
 if __name__ == "__main__":
 
-    for sentence in read_morpheme_sentences("neko.txt.mecab"):
+    morphemes = extract_morphemes("neko.txt.mecab")
+    sentenses = separate_morphemes_with_sentence(morphemes)
+
+    for sentence in sentenses:
         print(sentence)
