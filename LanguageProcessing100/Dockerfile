@@ -19,5 +19,7 @@ RUN cd /opt && \
     make check && \
     make install
 RUN pip install -r requirements.txt
+RUN wget https://ja.osdn.net/projects/vlgothic/downloads/62375/VLGothic-20141206.tar.xz -P /tmp/
+RUN tar Jxfv /tmp/VLGothic-20141206.tar.xz -C /usr/share/fonts/
 
 CMD ["/bin/bash"]

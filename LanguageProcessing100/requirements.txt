@@ -1,3 +1,4 @@
 requests
 mecab-python3
 numpy
+matplotlib
