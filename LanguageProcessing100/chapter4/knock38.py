@@ -6,12 +6,12 @@ from matplotlib import pyplot
 
 def plot_dcit_histogram(dic, max, **graph_elements):
     
-    sorted_dic = sorted(dic.values(), reverse=True)
+    sorted_occurrences = sorted(dic.values(), reverse=True)
 
     fig = pyplot.figure(figsize=(10, 10))
     font = FontProperties(fname="/usr/share/fonts/VLGothic/VL-Gothic-Regular.ttf", size=14)
     ax = fig.add_subplot(111)
-    ax.hist(sorted_dic, bins=max, range=(0, max))
+    ax.hist(sorted_occurrences, bins=max, range=(0, max))
 
     if "xlabel" in graph_elements:
         ax.set_xlabel(graph_elements["xlabel"])
