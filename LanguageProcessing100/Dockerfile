@@ -29,10 +29,11 @@ RUN echo "/usr/local/lib" >> /etc/ld.so.conf.d/lib.conf && ldconfig && \
     cd /root/ && \
     tar jxvf cabocha-0.69.tar.bz2 && \
     cd cabocha-0.69 && \
-    ./configure --with-charset=utf8 --enable-utf8-only && \
+    ./configure --with-mecab-config=`which mecab-config` --with-charset=UTF8 && \
     make && make install && \
     cd python && \
     python setup.py build && \
     python setup.py install
+RUN echo "ldconfig" >> /root/.bashrc
 
 CMD ["/bin/bash"]
