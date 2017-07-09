@@ -8,4 +8,7 @@ class Morph:
         self.pos1 = pos1
 
     def __str__(self):
-        return "surface: {0}, base: {1}, pos: {2}, po1: {3}".format(self.surface, self.base, self.pos, self.pos1)
+        return "surface: {0}, base: {1}, pos: {2}, pos1: {3}".format(self.surface, self.base, self.pos, self.pos1)
+
+    def is_mark(self):
+        return self.pos == "記号"
