@@ -13,4 +13,7 @@ class Chunk:
     def remove_marks(self):
         self.morphs = [morph for morph in self.morphs if not morph.is_mark()]
 
+    def get_phrase(self):
+        return "".join(morph.surface for morph in self.morphs)
+
 CHUNK_LINE_PATTERN = re.compile(r"^\*\s(\d+)\s(-?\d+)D\s(\d+/\d+)+\s(-|\d|\.)+\n$")
