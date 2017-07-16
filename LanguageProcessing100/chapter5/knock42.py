@@ -10,9 +10,9 @@ def make_dependency_pairs(chunks):
         chunk.remove_marks()
         dst_chunk = chunks[int(chunk.dst)]
         dst_chunk.remove_marks()
-
-        pair = (chunk, dst_chunk)
-        dependency_pairs.append(pair)
+        if len(chunk.morphs) != 0 and len(dst_chunk.morphs) != 0:
+            pair = (chunk, dst_chunk)
+            dependency_pairs.append(pair)
 
     return dependency_pairs
     
