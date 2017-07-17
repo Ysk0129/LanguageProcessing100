@@ -1,6 +1,7 @@
 FROM python:3.5.3
 ADD . /work
 WORKDIR /work
+RUN apt-get update && apt-get -y install graphviz
 RUN cd /opt && \
     git clone https://github.com/taku910/mecab.git && \
     cd /opt/mecab/mecab && \
