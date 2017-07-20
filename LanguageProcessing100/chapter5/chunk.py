@@ -16,6 +16,9 @@ class Chunk:
     def get_phrase(self):
         return "".join(morph.surface for morph in self.morphs)
 
+    def get_morphs_by_pos(self, pos):
+        return [morph for morph in self.morphs if morph.pos in pos]
+
     def get_included_pos(self):
         return [morph.pos for morph in self.morphs]
 
