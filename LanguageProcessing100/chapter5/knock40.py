@@ -4,7 +4,7 @@ from chunk import CHUNK_LINE_PATTERN
 
 def group_by_sentence(lattice_format_filename):
 
-    sentenes = []
+    sentences = []
 
     with open(lattice_format_filename) as file:
         line = file.readline()
@@ -15,14 +15,14 @@ def group_by_sentence(lattice_format_filename):
         while line:
             if line == eos:
                 if len(sentence) != 0:
-                    sentenes.append(sentence)
+                    sentences.append(sentence)
                     sentence = []
                 line = file.readline()
                 continue
             sentence.append(line)
             line = file.readline()
 
-    return sentenes
+    return sentences
 
 def remove_chunk_lines(lattice_format_lines):
 
