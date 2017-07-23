@@ -12,16 +12,18 @@ if __name__ == "__main__":
             src = pair[0]
             dst = pair[1]
 
+            dst_index = dst.dst
+
             particles = src.get_morphs_by_pos("助詞")
             verbs = dst.get_morphs_by_pos("動詞")
 
             if len(particles) != 0 and len(verbs) != 0:
                 #動詞は最左のみ(問題参照)
-                if verbs[0].base not in lines.keys():
-                    lines[verbs[0].base] = " ".join([particle.base for particle in particles])
+                if dst_index not in lines.keys():
+                    lines[dst_index] = verbs[0].base + "\t" + " ".join([particle.base for particle in particles])
                 else:
-                    lines[verbs[0].base] += " " + " ".join([particle.base for particle in particles])
+                    lines[dst_index] += " " + " ".join([particle.base for particle in particles])
 
         with open("corpus.txt", "a") as f:
-            for k, v in lines.items():
-                f.write(k + "\t" + v + "\n")
+            for line in sorted(lines.items(), key=lambda x: x[0]):
+                f.write(line[1] + "\n")
