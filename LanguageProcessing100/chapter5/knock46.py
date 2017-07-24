@@ -29,4 +29,4 @@ if __name__ == "__main__":
 
         with open("corpus2.txt", "a") as f:
             for line in sorted(lines.items(), key=lambda x: x[0]):
-                f.write(line[1][0] + "\t" + " ".join([particle_phrase for particle_phrase in line[1][1:-1]]) + "\n")
+                f.write(line[1][0] + "\t" + " ".join([particle_phrase for particle_phrase in line[1][1:]]) + "\n")
