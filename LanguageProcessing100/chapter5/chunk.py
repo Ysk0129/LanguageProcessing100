@@ -19,6 +19,9 @@ class Chunk:
     def get_morphs_by_pos(self, pos):
         return [morph for morph in self.morphs if pos in morph.pos]
 
+    def get_morphs(self, func):
+        return func(self.morphs)
+
     def get_included_pos(self):
         return [morph.pos for morph in self.morphs]
 
