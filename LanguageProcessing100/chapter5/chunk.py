@@ -24,5 +24,8 @@ class Chunk:
 
     def get_included_pos(self):
         return [morph.pos for morph in self.morphs]
+    
+    def get_included_pos1(self):
+        return [morph.pos1 for morph in self.morphs]
 
 CHUNK_LINE_PATTERN = re.compile(r"^\*\s(\d+)\s(-?\d+)D\s(\d+/\d+)+\s(-|\d|\.)+\n$")
