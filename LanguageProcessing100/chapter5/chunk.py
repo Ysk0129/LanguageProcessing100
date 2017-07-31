@@ -31,4 +31,9 @@ class Chunk:
     def get_included_surfaces(self):
         return [morph.surface for morph in self.morphs]
 
+    def replace_surface(self, pos, new_surface):
+        for i in range(0, len(self.morphs)):
+            if self.morphs[i].pos == pos:
+                self.morphs[i].surface = new_surface
+
 CHUNK_LINE_PATTERN = re.compile(r"^\*\s(\d+)\s(-?\d+)D\s(\d+/\d+)+\s(-|\d|\.)+\n$")
