@@ -26,3 +26,24 @@ class Sentence:
                 dependency_pairs.append(pair)
 
         return dependency_pairs
+
+    def make_dependency_paths(self):
+
+        dependency_paths = []
+        for chunk in self.chunks:
+            if chunk.dst == "-1":
+                continue
+                
+            chunk.remove_marks()
+
+            dependency_path = [chunk]
+            dst = chunk.dst
+            while(dst != "-1"):
+                dst_chunk = self.chunks[int(dst)]
+                dst_chunk.remove_marks()
+                dependency_path.append(dst_chunk)
+                dst = dst_chunk.dst
+
+            dependency_paths.append(dependency_path)
+            
+        return dependency_paths
