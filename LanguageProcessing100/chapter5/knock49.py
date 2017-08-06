@@ -8,6 +8,7 @@ if __name__ == "__main__":
         sentence = Sentence(chunks)
         dependency_paths = sentence.make_dependency_paths()
         lines = []
+        lines2 = []
         
         first = ""
         last = ""
@@ -24,9 +25,19 @@ if __name__ == "__main__":
             path[0].replace_surface("名詞", "Y")
 
             lines.append(first + " -> ".join([chunk.get_phrase() for chunk in path[0:-1]]) + last)
+
+            if len(path) >= 2:
+                path[0].replace_surface("名詞", "X")
+                for i in reversed(range(1, len(path) - 1)):
+                    if "名詞" in path[i].get_included_pos():
+                        phrase = " -> ".join([chunk.get_phrase() for chunk in path[0:i]])
+                        lines2.append(phrase + " -> Y")
         
         first = ""
         last = ""
         with open("corpus5.txt", "a") as f:
             for line in lines:
+                f.write(line + "\n")
+
+            for line in lines2:
                 f.write(line + "\n")
