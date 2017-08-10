@@ -3,7 +3,6 @@ import re
 
 if __name__ == "__main__":
 
-    term = re.compile(r"[.;:?!]")
     sentences = sys.argv[1].split("\n")
     for sentence in sentences:
         words = sentence.split(" ")
