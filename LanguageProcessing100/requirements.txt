@@ -3,3 +3,4 @@ mecab-python3
 numpy
 matplotlib
 pydotplus
+stemming
