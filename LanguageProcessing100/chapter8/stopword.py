@@ -15,3 +15,6 @@ class StopWord:
             "by", "how", "not", "that", "we", "can", "however", "of", "the", "were",
             "could", "i", "on", "their", "what", "d", "if", "one", "them", "when"
         ]
+
+    def is_included(self, word):
+        return word in self.words
