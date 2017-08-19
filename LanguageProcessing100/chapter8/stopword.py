@@ -18,9 +18,10 @@ class StopWord:
             "could", "i", "on", "their", "what", "d", "if", "one", "them", "when"
         ]
 
+        self.word_stem = [stem(word) for word in self.words]
+
     def is_included(self, word):
         return word in self.words
 
     def is_included_stem(self, word):
-        stemmed_words = [stem(word) for word in self.words]
-        return stem(word) in stemmed_words
+        return word.lower in self.word_stem
