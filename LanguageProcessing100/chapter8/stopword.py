@@ -1,3 +1,5 @@
+from stemming.porter2 import stem
+
 class StopWord:
 
     def __init__(self):
@@ -18,3 +20,7 @@ class StopWord:
 
     def is_included(self, word):
         return word in self.words
+
+    def is_included_stem(self, word):
+        stemmed_words = [stem(word) for word in self.words]
+        return stem(word) in stemmed_words
