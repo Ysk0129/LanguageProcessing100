@@ -17,10 +17,6 @@ def sigmoid(data_x, theta):
     print(np.exp(-data_x.dot(theta)))
     return 1 / (1 + np.exp(-data_x.dot(theta)))
 
-def extract_stems(lines):
-    words_list = [line.split(" ")[1:] for line in lines]
-    #flatten
-    words = [word for words in words_list for word in words]
-
+def stem_all(words):
     stems = [stem(word) for word in words]
     return stems
