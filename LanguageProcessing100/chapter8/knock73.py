@@ -20,3 +20,9 @@ def sigmoid(data_x, theta):
 def stem_all(words):
     stems = [stem(word) for word in words]
     return stems
+
+def cost(data_x, theta, data_y):
+    size = data_y.size
+    hypothesis = sigmoid(data_x, theta)
+    prediction = 1 / size * np.sum(-data_y * np.log(hypothesis) - (np.ones(size) - data_y) * np.log(np.ones(size) - hypothesis))
+    return prediction
