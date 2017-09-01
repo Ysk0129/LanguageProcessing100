@@ -26,3 +26,9 @@ def cost(data_x, theta, data_y):
     hypothesis = sigmoid(data_x, theta)
     prediction = 1 / size * np.sum(-data_y * np.log(hypothesis) - (np.ones(size) - data_y) * np.log(np.ones(size) - hypothesis))
     return prediction
+
+def gradient(data_x, theta, data_y):
+    size = data_y.size()
+    hypothesis = sigmoid(data_x, theta)
+    gradient = 1 / size * (hypothesis - data_y).dot(data_x)
+    return gradient
