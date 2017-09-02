@@ -24,4 +24,4 @@ class StopWord:
         return word in self.words
 
     def is_included_stem(self, word):
-        return word.lower in self.word_stem
+        return word.lower() in self.word_stem
