@@ -1,5 +1,6 @@
 import numpy as np
 from stemming.porter2 import stem
+from stopword import StopWord
 
 def load_features():
     with open("features.txt") as f:
@@ -32,3 +33,8 @@ def gradient(data_x, theta, data_y):
     hypothesis = sigmoid(data_x, theta)
     gradient = 1 / size * (hypothesis - data_y).dot(data_x)
     return gradient
+
+def remove_stopword(stems):
+    sw = StopWord()
+    removed = [stm for stm in stems if sw.is_included_stem(stm)]
+    return removed
