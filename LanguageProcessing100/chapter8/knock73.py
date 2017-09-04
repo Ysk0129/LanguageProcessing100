@@ -36,5 +36,11 @@ def gradient(data_x, theta, data_y):
 
 def remove_stopword(stems):
     sw = StopWord()
-    removed = [stm for stm in stems if sw.is_included_stem(stm)]
+    removed = [stm for stm in stems if not sw.is_included_stem(stm)]
     return removed
+
+def learn(data_x, data_y, alpha, count):
+    theta = np.zeros(data_x.shape[1])
+    cost = cost(data_x, theta, data_y)
+
+    return theta
