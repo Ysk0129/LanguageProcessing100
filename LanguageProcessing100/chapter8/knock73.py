@@ -43,4 +43,8 @@ def learn(data_x, data_y, alpha, count):
     theta = np.zeros(data_x.shape[1])
     cost = cost(data_x, theta, data_y)
 
+    for i in range(1, count + 1):
+        gradient = gradient(data_x, theta, data_y)
+        theta -= alpha * gradient
+
     return theta
