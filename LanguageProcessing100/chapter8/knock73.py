@@ -48,3 +48,12 @@ def learn(data_x, data_y, alpha, count):
         theta -= alpha * gradient
 
     return theta
+
+if __name__ == "__main__":
+
+    features = load_features()
+    sentiment_lines = load_sentiments()
+
+    splited = [sentiment.split(" ") for sentiment in sentiment_lines]
+    sentiments = [line[1:] for line in splited]
+    labels = [line[0] for line in splited]
