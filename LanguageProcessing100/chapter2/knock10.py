@@ -1,8 +1,7 @@
 
 if __name__ == "__main__":
 
-    file = open("hightemp.txt")
-    answer = len(file.readlines())
-    file.close()
+    with open("hightemp.txt") as f:
+        answer = len(f.readlines())
 
     print(answer)
